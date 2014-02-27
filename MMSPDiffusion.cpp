@@ -29,7 +29,7 @@ for (int x=x0(GRID); x<x1(GRID); x++)
 	} 
 	else { 
 		GRID[x]=0;
-		update[x]=1
+		update[x]=1;
 	} 
 
 //now we set the boundary conditions of both grids.  By choosing the Dirichlet conditions, it is nearly identical to loop enforced boundaries.  
