@@ -1,0 +1,36 @@
+vim FYI: exit edit mode (esc) then / works like ctrl-f in windows (/hello searches document for the string hello)
+
+Default Boundary conditions est in MMSP/include/MMSP.grid.hpp lines 273&274
+
+possible solution to n-dimensional grid BC definition problem:
+
+for (int i=0; i<dim; i++) {
+	b0[GRID,i] = 
+	b1[GRID,i] = 
+	b0[update,i]=
+	b1[update,i]=
+}
+
+Find out what p0,p1,sp,n0,n1,dx,g0,g1 are
+	I think n is used to control the i in GRID(i)
+	Most of this is used for parrallel processing stuff
+	g0,g1 can be used to tell if parrallelization has occured
+
+Command at MMSP.grid.hpp lines 415&416 that sets default BCs
+
+in MMSP.vector.hpp line 283 it looks like b0 is being recycled to define something for a vector.
+
+In MMSP.utility.hpp
+
+line 30 numerically defines differnt BC options
+line 40 tells how the BC operators work (ie, defines the value of the "cell" one step outside of the grid
+
+In general, the code speaks of x, x0, and x1 but I don't see y,y0,y1, z, z0, z1...
+	I know that it has to be somewhere though.
+MMSP.grid.hpp calls on the utility functions using x as default to define all directions, but it is possible to define each individually
+	line 1082, but I don't see b0 anywhere in there
+	sets up in line 29 - does include b0
+
+Why does the MMSP documentation define grid utility commands including GRID, I thought GRID was like a variable name that could be changed to anything?!
+
+
